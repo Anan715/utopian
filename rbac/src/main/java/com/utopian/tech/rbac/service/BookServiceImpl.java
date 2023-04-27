@@ -58,7 +58,7 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements Bo
     @Override
     public List<Book> getBoolList() throws Exception {
         List<Integer> ids = new ArrayList<>();
-        for (int i = 1; i <= 2000; i++) {
+        for (int i = 1; i <= 20; i++) {
             ids.add(i);
         }
         LambdaQueryWrapper<Book> wrapper = new LambdaQueryWrapper();

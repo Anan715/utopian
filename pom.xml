@@ -52,6 +52,7 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+                <!--import 类型必须为type，且必须放到 dependencyManagement 中 -->
             </dependency>
             <!-- spring-cloud-alibaba 依赖-->
             <dependency>
@@ -147,6 +148,30 @@
 
 
         </dependencies>
+
+    <profiles>
+        <!--本地环境-->
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profiles.active>local</spring.profiles.active>
+            </properties>
+        </profile>
+
+        <!-- 开发环境 -->
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
 
 
 </project>
