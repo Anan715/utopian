@@ -23,6 +23,11 @@ public class RedisConfig {
     }
 
 
+    /**
+     * 开启 redis事务后，在  @Transactional 执行的命令也会被认为在redis事务中执行的命令，此时 redis 在设置某值时，返回为 null，
+     * 因此需要单独为其配置一个 stringRedisTemplateTransaction ,执行 redis 事务命令时使用该 bean
+     * redis 执行非事务代码时，使用 stringRedisTemplate
+     */
     @Bean(name = "stringRedisTemplateTransaction")
     public StringRedisTemplate stringRedisTemplateTransaction() {
         StringRedisTemplate template = new StringRedisTemplate();
