@@ -1,5 +1,6 @@
 package com.utopian.tech.rbac.controller;
 
+import com.utopian.tech.base.exception.UtopianException;
 import com.utopian.tech.base.response.UtopianResponse;
 import com.utopian.tech.base.util.RedisUtil;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ public class TokenController {
     private RedisUtil redisUtil;
 
     @GetMapping("/avoid/token")
-    public UtopianResponse<String> getToken(String userName) {
+    public UtopianResponse<String> getToken(String userName) throws UtopianException {
         return UtopianResponse.successWithData(redisUtil.getAvoidSubmitToken(userName));
     }
 }

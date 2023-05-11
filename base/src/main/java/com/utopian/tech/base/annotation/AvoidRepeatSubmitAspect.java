@@ -2,6 +2,7 @@ package com.utopian.tech.base.annotation;
 
 
 import com.utopian.tech.base.errorEnum.RequestErrorEnum;
+import com.utopian.tech.base.errorEnum.UtopianErrorEnum;
 import com.utopian.tech.base.exception.UtopianException;
 import com.utopian.tech.base.util.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -73,7 +74,7 @@ public class AvoidRepeatSubmitAspect {
             String userName = request.getHeader("userName");
 //            String userName = getPostRequestBodyParameter(request, "userName");
             if (StringUtils.isBlank(requestToken)) {
-                UtopianException utopianException = new UtopianException(RequestErrorEnum.REQUEST_LACK_PARAM_ERROR);
+                UtopianException utopianException = new UtopianException(UtopianErrorEnum.REQUEST_LACK_PARAM_ERROR);
                 throw utopianException;
             }
             String key = String.format(RedisUtil.SUBMIT_ORDER_TOKEN_KEY, userName, requestToken);
