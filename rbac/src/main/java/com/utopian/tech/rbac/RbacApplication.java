@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @MapperScan(basePackages = {"com.utopian.tech.rbac.mapper"})
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.utopian.tech")
 public class RbacApplication {
     public static void main(String[] args) {
         SpringApplication.run(RbacApplication.class, args);

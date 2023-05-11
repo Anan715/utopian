@@ -39,5 +39,10 @@ public class Book implements Serializable {
      */
     private Integer number;
 
+    /**
+     * 用户名
+     */
+    private transient String userName;
+
 
 }

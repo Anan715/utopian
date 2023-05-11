@@ -25,4 +25,5 @@ public interface BookService extends IService<Book> {
 
     void saveBookList();
 
+    void addBook(Book book);
 }

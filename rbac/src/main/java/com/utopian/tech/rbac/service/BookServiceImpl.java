@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.utopian.tech.rbac.entity.Book;
 import com.utopian.tech.rbac.mapper.BookMapper;
-import com.utopian.tech.util.MybatisParameterUtils;
+import com.utopian.tech.base.util.MybatisParameterUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -79,6 +79,11 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements Bo
         this.saveBatch(saveList);
     }
 
+    @Override
+    public void addBook(Book book) {
+        baseMapper.insert(book);
+    }
+
 
     public void m1() {
         List<Book> list = new ArrayList<>();
@@ -93,7 +98,6 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements Bo
         list.stream().anyMatch(i -> i.getId()> 10);
         list.stream().filter(book -> book.getId() == 5);
         list.stream().filter(book -> book.getId() > 5);
-
 
         list.stream().sorted(Comparator.comparingInt(Book::getNumber));
 

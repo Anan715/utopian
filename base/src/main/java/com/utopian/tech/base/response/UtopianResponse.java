@@ -1,4 +1,4 @@
-package com.utopian.tech.response.entity;
+package com.utopian.tech.base.response;
 
 import org.springframework.http.HttpStatus;
 

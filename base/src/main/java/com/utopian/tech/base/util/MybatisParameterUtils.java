@@ -1,4 +1,4 @@
-package com.utopian.tech.util;
+package com.utopian.tech.base.util;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
