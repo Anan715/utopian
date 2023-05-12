@@ -21,6 +21,10 @@ public class UtopianResponse<T> {
         return new UtopianResponse<>(HttpStatus.OK.value(), null, null);
     }
 
+    public static <T> UtopianResponse<T> successWithoutData(String message) {
+        return new UtopianResponse<>(HttpStatus.OK.value(), message, null);
+    }
+
     public static <T> UtopianResponse<T> successWithData(T data) {
         return new UtopianResponse<>(HttpStatus.OK.value(), null, data);
     }
