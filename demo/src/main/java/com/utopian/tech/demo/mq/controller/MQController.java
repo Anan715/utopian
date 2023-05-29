@@ -3,6 +3,7 @@ package com.utopian.tech.demo.mq.controller;
 
 import com.utopian.tech.base.response.UtopianResponse;
 import com.utopian.tech.demo.mq.config.ConfirmConfig;
+import com.utopian.tech.demo.mq.config.DelayQueueConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -65,19 +66,19 @@ public class MQController {
     }
 
 
-    @GetMapping("/send/message/delay/plugin")
+    @GetMapping("/send/message/delay")
     public void sendMessageWithPlugin() {
 
-//        String message = UUID.randomUUID().toString();
-//        Integer delayTime = 4321;
-//        log.info("当前时间：{} 发送一条信息 -{} 延迟 {} 给队列 {} ", new Date().toString(), message, delayTime, DelaydedQueueConfig.DELAYED_QUEUE_NAME);
-//        rabbitTemplate.convertAndSend(DelaydedQueueConfig.DELAYED_EXCHANGE_NAME,
-//                DelaydedQueueConfig.DELAYED_ROUTING_KEY,
-//                "发送10秒超时的消息：" + message,
-//                msg -> {
-//                    msg.getMessageProperties().setDelay(delayTime);
-//                    return msg;
-//                });
+        String message = UUID.randomUUID().toString();
+        Integer delayTime = 4321;
+        log.info("当前时间：{} 发送一条信息 -{} 延迟 {} 给队列 {} ", new Date().toString(), message, delayTime, DelayQueueConfig.DELAYED_QUEUE_NAME);
+        rabbitTemplate.convertAndSend(DelayQueueConfig.DELAYED_EXCHANGE_NAME,
+                DelayQueueConfig.DELAYED_ROUTING_KEY,
+                "发送10秒超时的消息：" + message,
+                msg -> {
+                    msg.getMessageProperties().setDelay(delayTime);
+                    return msg;
+                });
     }
 
 
